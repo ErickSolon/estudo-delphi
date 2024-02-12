@@ -9,7 +9,7 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, Datasnap.DBClient, Vcl.Grids, Vcl.DBGrids,
-  Datasnap.Provider, Vcl.ExtCtrls, Vcl.Buttons, Vcl.DBCtrls;
+  Datasnap.Provider, Vcl.ExtCtrls, Vcl.Buttons, Vcl.DBCtrls, Vcl.StdCtrls;
 
 type
   TForm1 = class(TForm)
@@ -26,7 +26,12 @@ type
     ClientDataSet1cpf: TStringField;
     ClientDataSet1telefone: TStringField;
     DBNavigator1: TDBNavigator;
+    PageControl1: TPageControl;
+    DeltarButton: TButton;
+    SalvarBtn: TButton;
+    DeletarCheckbox: TCheckBox;
     procedure FormCreate(Sender: TObject);
+    procedure DeletarCheckboxClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -40,11 +45,26 @@ implementation
 
 {$R *.dfm}
 
+procedure TForm1.DeletarCheckboxClick(Sender: TObject);
+begin
+  if DeletarCheckbox.Checked then
+  begin
+    DeltarButton.Enabled := true;
+  end
+  else
+  begin
+    DeltarButton.Enabled := false;
+  end;
+end;
+
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   DataModule1 := TDataModule1.Create(Self);
 
-  TabelaBackupDataSource.DataSet.Active := true;
+  with TabelaBackupDataSource.DataSet do
+  begin
+    Active := true;
+  end;
 
   with DataModule1.Conn do
   begin

@@ -14,9 +14,9 @@ object Form1: TForm1
   TextHeight = 15
   object DBGrid1: TDBGrid
     Left = 0
-    Top = 0
+    Top = 105
     Width = 624
-    Height = 416
+    Height = 311
     Align = alClient
     DataSource = TabelaBackupDataSource
     TabOrder = 0
@@ -75,24 +75,58 @@ object Form1: TForm1
     ExplicitTop = 408
     ExplicitWidth = 600
   end
+  object PageControl1: TPageControl
+    Left = 0
+    Top = 0
+    Width = 624
+    Height = 105
+    Align = alTop
+    TabOrder = 2
+  end
+  object DeltarButton: TButton
+    Left = 541
+    Top = 38
+    Width = 75
+    Height = 25
+    Caption = 'DELETAR'
+    Enabled = False
+    TabOrder = 3
+  end
+  object SalvarBtn: TButton
+    Left = 541
+    Top = 74
+    Width = 75
+    Height = 25
+    Caption = 'SALVAR'
+    TabOrder = 4
+  end
+  object DeletarCheckbox: TCheckBox
+    Left = 541
+    Top = 8
+    Width = 75
+    Height = 17
+    Caption = 'DELETAR?'
+    TabOrder = 5
+    OnClick = DeletarCheckboxClick
+  end
   object SelectBackup: TFDQuery
     Connection = DataModule1.Conn
     SQL.Strings = (
       'SELECT * FROM backup;')
-    Left = 536
-    Top = 104
+    Left = 114
+    Top = 344
   end
   object TabelaBackupDataSource: TDataSource
     DataSet = ClientDataSet1
-    Left = 544
-    Top = 8
+    Left = 326
+    Top = 344
   end
   object ClientDataSet1: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'DataSetProvider1'
-    Left = 439
-    Top = 88
+    Left = 31
+    Top = 344
     object ClientDataSet1id: TAutoIncField
       FieldName = 'id'
       Origin = 'id'
@@ -131,6 +165,7 @@ object Form1: TForm1
   end
   object DataSetProvider1: TDataSetProvider
     DataSet = SelectBackup
-    Left = 448
+    Left = 204
+    Top = 344
   end
 end
