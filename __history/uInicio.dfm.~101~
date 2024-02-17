@@ -51,7 +51,6 @@ object TelaInicial: TTelaInicial
         Height = 78
         Align = alTop
         Caption = 'Relat'#243'rios'
-        OnClick = RelatoriosBtnClick
         ExplicitTop = 276
       end
       object TelaInicialBtn: TSpeedButton
@@ -279,24 +278,32 @@ object TelaInicial: TTelaInicial
         Left = 1
         Top = 1
         Width = 398
-        Height = 120
+        Height = 48
         Align = alTop
         TabOrder = 0
+        object Label1: TLabel
+          Left = 5
+          Top = 3
+          Width = 33
+          Height = 15
+          Caption = 'Nome'
+        end
         object Edit2: TEdit
           Left = 5
-          Top = 7
+          Top = 20
           Width = 121
-          Height = 23
+          Height = 25
           TabOrder = 0
         end
         object BitBtn1: TBitBtn
           Left = 322
           Top = 1
           Width = 75
-          Height = 118
+          Height = 46
           Align = alRight
           Caption = 'Filtrar'
           TabOrder = 1
+          OnClick = BitBtn1Click
           ExplicitLeft = 306
           ExplicitTop = 91
           ExplicitHeight = 23
@@ -304,9 +311,9 @@ object TelaInicial: TTelaInicial
       end
       object Panel4: TPanel
         Left = 1
-        Top = 121
+        Top = 49
         Width = 398
-        Height = 318
+        Height = 390
         Align = alClient
         Caption = 'Panel4'
         TabOrder = 1
@@ -316,7 +323,7 @@ object TelaInicial: TTelaInicial
           Left = 1
           Top = 1
           Width = 396
-          Height = 316
+          Height = 388
           Align = alClient
           DataSource = SelectAllBackup2DataSource
           TabOrder = 0
@@ -376,15 +383,15 @@ object TelaInicial: TTelaInicial
         ParamType = ptInput
         Value = ''
       end>
-    Left = 592
-    Top = 336
+    Left = 637
+    Top = 360
   end
   object SelectAllBackup2: TFDQuery
     Connection = ConnDataModule.Connection
     SQL.Strings = (
       'SELECT * FROM backup2;')
-    Left = 657
-    Top = 314
+    Left = 390
+    Top = 101
     object SelectAllBackup2id: TFDAutoIncField
       FieldName = 'id'
       Origin = 'id'
@@ -429,7 +436,7 @@ object TelaInicial: TTelaInicial
   object SelectAllBackup2DataSource: TDataSource
     AutoEdit = False
     DataSet = SelectAllBackup2
-    Left = 563
-    Top = 285
+    Left = 259
+    Top = 101
   end
 end

@@ -10,6 +10,7 @@ object TelaInicial: TTelaInicial
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  WindowState = wsMaximized
   OnCreate = FormCreate
   TextHeight = 15
   object DadosTelaInicial: TPanel
@@ -270,10 +271,6 @@ object TelaInicial: TTelaInicial
       Height = 440
       Align = alClient
       TabOrder = 2
-      ExplicitLeft = 272
-      ExplicitTop = 112
-      ExplicitWidth = 185
-      ExplicitHeight = 41
       object Panel3: TPanel
         Left = 1
         Top = 1
@@ -292,7 +289,7 @@ object TelaInicial: TTelaInicial
           Left = 5
           Top = 20
           Width = 121
-          Height = 25
+          Height = 23
           TabOrder = 0
         end
         object BitBtn1: TBitBtn
@@ -304,9 +301,6 @@ object TelaInicial: TTelaInicial
           Caption = 'Filtrar'
           TabOrder = 1
           OnClick = BitBtn1Click
-          ExplicitLeft = 306
-          ExplicitTop = 91
-          ExplicitHeight = 23
         end
       end
       object Panel4: TPanel
@@ -317,8 +311,6 @@ object TelaInicial: TTelaInicial
         Align = alClient
         Caption = 'Panel4'
         TabOrder = 1
-        ExplicitTop = 248
-        ExplicitHeight = 191
         object DBGrid1: TDBGrid
           Left = 1
           Top = 1

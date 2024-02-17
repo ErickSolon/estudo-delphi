@@ -108,8 +108,15 @@ uses
   Vcl.Imaging.jpeg,
   uCORES,
   Vcl.Buttons,
-  uRelatorios, Datasnap.Provider, Datasnap.DBClient, Vcl.Grids, Vcl.DBGrids,
-  Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, FireDAC.Comp.DataSet, FireDAC.DApt;
+  Datasnap.Provider,
+  Datasnap.DBClient,
+  Vcl.Grids,
+  Vcl.DBGrids,
+  Vcl.StdCtrls,
+  Vcl.Mask,
+  Vcl.DBCtrls,
+  FireDAC.Comp.DataSet,
+  FireDAC.DApt;
 
 type
   TTelaInicial = class(TForm)
@@ -140,9 +147,9 @@ type
     Panel4: TPanel;
     Edit2: TEdit;
     BitBtn1: TBitBtn;
+    Label1: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure SairBtnClick(Sender: TObject);
-    procedure RelatoriosBtnClick(Sender: TObject);
     procedure SalvarClick(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
   private
@@ -164,6 +171,7 @@ begin
   ConnDataModule := TConnDataModule.Create(Self);
   EstilosPaginaInicial;
   NomeLabel.Font.Color := BRANCO;
+  Label1.Font.Color := BRANCO;
 
   with ConnDataModule.Connection do
   begin
@@ -191,12 +199,6 @@ begin
   end;
 end;
 
-procedure TTelaInicial.RelatoriosBtnClick(Sender: TObject);
-begin
-  FormularioRelatorios := TFormularioRelatorios.Create(Self);
-  FormularioRelatorios.Show;
-end;
-
 procedure TTelaInicial.SairBtnClick(Sender: TObject);
 begin
   Close;
@@ -217,21 +219,20 @@ begin
   begin
     SQL.Clear;
 
-    if Edit2.Text <> NULL then
+    if Edit2.Text <> '' then
     begin
-
-      SQL.Add('SELECT * FROM backup2 WHERE nome = :nome');
-      Params.ParamByName('nome').AsString := Edit2.Text;
+      SQL.Add('SELECT * FROM backup2 WHERE nome LIKE :nome');
+      Params.ParamByName('nome').AsString := '%' + Edit2.Text + '%';
     end
     else
     begin
-      SQL.Clear;
       SQL.Add('SELECT * FROM backup2');
     end;
 
     Open;
   end;
 end;
+
 
 procedure TTelaInicial.EstilosPaginaInicial;
 begin
