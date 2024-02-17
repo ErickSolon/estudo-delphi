@@ -1,0 +1,12 @@
+unit uCORES;
+
+interface
+  const
+    PRETO = $000000;
+    BRANCO = $ffffff;
+    VERMELHO = $ff3300;
+    ROXO = '';
+
+implementation
+
+end.
