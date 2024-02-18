@@ -1,0 +1,102 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Atualizar'
+  ClientHeight = 165
+  ClientWidth = 583
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 583
+    Height = 165
+    Align = alClient
+    AutoSize = True
+    TabOrder = 0
+    ExplicitWidth = 634
+    object Label1: TLabel
+      Left = 24
+      Top = 16
+      Width = 33
+      Height = 15
+      Caption = 'Nome'
+      Color = clBackground
+      ParentColor = False
+    end
+    object Label2: TLabel
+      Left = 160
+      Top = 19
+      Width = 61
+      Height = 15
+      Caption = 'Sobrenome'
+      Color = clBackground
+      ParentColor = False
+    end
+    object Label3: TLabel
+      Left = 296
+      Top = 19
+      Width = 21
+      Height = 15
+      Caption = 'CPF'
+      Color = clBackground
+      ParentColor = False
+    end
+    object Label4: TLabel
+      Left = 432
+      Top = 19
+      Width = 44
+      Height = 15
+      Caption = 'Telefone'
+      Color = clBackground
+      ParentColor = False
+    end
+    object SalvarEdicao: TBitBtn
+      Left = 478
+      Top = 104
+      Width = 75
+      Height = 25
+      Caption = 'Editar'
+      TabOrder = 0
+      OnClick = SalvarEdicaoClick
+    end
+    object Edit2: TEdit
+      Left = 160
+      Top = 40
+      Width = 121
+      Height = 23
+      TabOrder = 1
+    end
+    object Edit3: TEdit
+      Left = 296
+      Top = 40
+      Width = 121
+      Height = 23
+      TabOrder = 2
+    end
+    object Edit4: TEdit
+      Left = 432
+      Top = 40
+      Width = 121
+      Height = 23
+      TabOrder = 3
+    end
+    object NomeEditar: TEdit
+      Left = 24
+      Top = 40
+      Width = 121
+      Height = 23
+      TabOrder = 4
+    end
+  end
+  object FDQuery1: TFDQuery
+    Connection = ConnDataModule.Connection
+    Left = 368
+    Top = 88
+  end
+end

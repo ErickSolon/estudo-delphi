@@ -227,57 +227,24 @@ object TelaInicial: TTelaInicial
         end
       end
     end
-    object Panel1: TPanel
-      AlignWithMargins = True
-      Left = 591
-      Top = 4
-      Width = 125
-      Height = 434
-      Align = alRight
-      AutoSize = True
-      TabOrder = 1
-      object NomeLabel: TLabel
-        Left = 1
-        Top = 1
-        Width = 123
-        Height = 15
-        Align = alTop
-        Caption = 'Nome'
-        ExplicitWidth = 33
-      end
-      object Salvar: TBitBtn
-        Left = 1
-        Top = 408
-        Width = 123
-        Height = 25
-        Align = alBottom
-        Caption = 'Salvar'
-        TabOrder = 0
-        OnClick = SalvarClick
-      end
-      object Edit1: TEdit
-        Left = 1
-        Top = 16
-        Width = 123
-        Height = 23
-        Align = alTop
-        TabOrder = 1
-      end
-    end
     object Panel2: TPanel
       Left = 188
       Top = 1
-      Width = 400
+      Width = 531
       Height = 440
       Align = alClient
-      TabOrder = 2
+      TabOrder = 1
       object Panel3: TPanel
-        Left = 1
-        Top = 1
-        Width = 398
+        AlignWithMargins = True
+        Left = 4
+        Top = 4
+        Width = 523
         Height = 48
         Align = alTop
         TabOrder = 0
+        ExplicitLeft = 1
+        ExplicitTop = 1
+        ExplicitWidth = 529
         object Label1: TLabel
           Left = 5
           Top = 3
@@ -286,36 +253,55 @@ object TelaInicial: TTelaInicial
           Caption = 'Nome'
         end
         object Edit2: TEdit
+          AlignWithMargins = True
           Left = 5
           Top = 20
           Width = 121
           Height = 23
           TabOrder = 0
+          OnChange = Edit2Change
         end
         object BitBtn1: TBitBtn
-          Left = 322
-          Top = 1
+          AlignWithMargins = True
+          Left = 363
+          Top = 4
           Width = 75
-          Height = 46
+          Height = 40
           Align = alRight
           Caption = 'Filtrar'
           TabOrder = 1
           OnClick = BitBtn1Click
+          ExplicitLeft = 369
+        end
+        object BitBtn2: TBitBtn
+          AlignWithMargins = True
+          Left = 444
+          Top = 4
+          Width = 75
+          Height = 40
+          Align = alRight
+          Caption = 'Novo'
+          TabOrder = 2
+          OnClick = BitBtn2Click
+          ExplicitLeft = 450
         end
       end
       object Panel4: TPanel
         Left = 1
-        Top = 49
-        Width = 398
-        Height = 390
+        Top = 55
+        Width = 529
+        Height = 384
         Align = alClient
         Caption = 'Panel4'
         TabOrder = 1
+        ExplicitTop = 49
+        ExplicitHeight = 390
         object DBGrid1: TDBGrid
-          Left = 1
-          Top = 1
-          Width = 396
-          Height = 388
+          AlignWithMargins = True
+          Left = 4
+          Top = 4
+          Width = 521
+          Height = 376
           Align = alClient
           DataSource = SelectAllBackup2DataSource
           TabOrder = 0
@@ -324,6 +310,7 @@ object TelaInicial: TTelaInicial
           TitleFont.Height = -12
           TitleFont.Name = 'Segoe UI'
           TitleFont.Style = []
+          OnCellClick = DBGrid1CellClick
           Columns = <
             item
               Expanded = False
@@ -364,24 +351,10 @@ object TelaInicial: TTelaInicial
       end
     end
   end
-  object InsertBackup2: TFDCommand
-    Connection = ConnDataModule.Connection
-    CommandText.Strings = (
-      'INSERT INTO backup2 (nome) VALUES (:Nome);')
-    ParamData = <
-      item
-        Name = 'NOME'
-        DataType = ftString
-        ParamType = ptInput
-        Value = ''
-      end>
-    Left = 637
-    Top = 360
-  end
   object SelectAllBackup2: TFDQuery
     Connection = ConnDataModule.Connection
     SQL.Strings = (
-      'SELECT * FROM backup2;')
+      'SELECT * FROM backup2 ORDER BY id DESC;')
     Left = 390
     Top = 101
     object SelectAllBackup2id: TFDAutoIncField

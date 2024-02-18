@@ -116,11 +116,12 @@ uses
   Vcl.Mask,
   Vcl.DBCtrls,
   FireDAC.Comp.DataSet,
-  FireDAC.DApt;
+  FireDAC.DApt,
+  uEditarCelulaTabelaInicial,
+  uAddNovaPessoaTelaInicial;
 
 type
   TTelaInicial = class(TForm)
-    InsertBackup2: TFDCommand;
     DadosTelaInicial: TPanel;
     NavbarTelaInicial: TPanel;
     SairBtn: TSpeedButton;
@@ -128,10 +129,6 @@ type
     TelaInicialBtn: TSpeedButton;
     PanelLogo: TPanel;
     LogoNavbarTelaInicial: TImage;
-    Panel1: TPanel;
-    NomeLabel: TLabel;
-    Salvar: TBitBtn;
-    Edit1: TEdit;
     DBGrid1: TDBGrid;
     SelectAllBackup2: TFDQuery;
     SelectAllBackup2DataSource: TDataSource;
@@ -148,12 +145,18 @@ type
     Edit2: TEdit;
     BitBtn1: TBitBtn;
     Label1: TLabel;
+    BitBtn2: TBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure SairBtnClick(Sender: TObject);
-    procedure SalvarClick(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
+    procedure DBGrid1CellClick(Column: TColumn);
+    procedure BitBtn2Click(Sender: TObject);
+    procedure Edit2Change(Sender: TObject);
+    
+    
   private
     procedure EstilosPaginaInicial;
+    procedure FiltroPgInicial;
     { Private declarations }
   public
     { Public declarations }
@@ -170,7 +173,6 @@ procedure TTelaInicial.FormCreate(Sender: TObject);
 begin
   ConnDataModule := TConnDataModule.Create(Self);
   EstilosPaginaInicial;
-  NomeLabel.Font.Color := BRANCO;
   Label1.Font.Color := BRANCO;
 
   with ConnDataModule.Connection do
@@ -204,35 +206,35 @@ begin
   Close;
 end;
 
-procedure TTelaInicial.SalvarClick(Sender: TObject);
-begin
-  with InsertBackup2 do
-  begin
-    Params.ParamByName('Nome').AsString := Edit1.Text;
-    Active := true;
-  end;
-end;
-
 procedure TTelaInicial.BitBtn1Click(Sender: TObject);
 begin
-  with SelectAllBackup2 do
-  begin
-    SQL.Clear;
-
-    if Edit2.Text <> '' then
-    begin
-      SQL.Add('SELECT * FROM backup2 WHERE nome LIKE :nome');
-      Params.ParamByName('nome').AsString := '%' + Edit2.Text + '%';
-    end
-    else
-    begin
-      SQL.Add('SELECT * FROM backup2');
-    end;
-
-    Open;
-  end;
+  FiltroPgInicial;
 end;
 
+
+procedure TTelaInicial.BitBtn2Click(Sender: TObject);
+begin
+  Form2 := TForm2.Create(Self);
+
+  Form2.ShowModal;
+end;
+
+procedure TTelaInicial.DBGrid1CellClick(Column: TColumn);
+begin
+  Form1 := TForm1.Create(Self);
+  Form1.Show;
+
+  Form1.NomeEditar.Text := DBGrid1.Fields[2].AsString;
+  Form1.Edit2.Text := DBGrid1.Fields[3].AsString;
+  Form1.Edit3.Text := DBGrid1.Fields[4].AsString;
+  Form1.Edit4.Text := DBGrid1.Fields[5].AsString;
+  Form1.IdPessoa := DBGrid1.Fields[0].AsInteger;
+end;
+
+procedure TTelaInicial.Edit2Change(Sender: TObject);
+begin
+  FiltroPgInicial;
+end;
 
 procedure TTelaInicial.EstilosPaginaInicial;
 begin
@@ -241,6 +243,24 @@ begin
   SairBtn.Font.Color := PRETO;
   TelaInicial.Font.Color := PRETO;
   RelatoriosBtn.Font.Color := PRETO;
+end;
+
+procedure TTelaInicial.FiltroPgInicial;
+begin
+  with SelectAllBackup2 do
+  begin
+    SQL.Clear;
+    if Edit2.Text <> '' then
+    begin
+      SQL.Add('SELECT * FROM backup2 WHERE nome LIKE :nome ORDER BY id DESC');
+      Params.ParamByName('nome').AsString := '%' + Edit2.Text + '%';
+    end
+    else
+    begin
+      SQL.Add('SELECT * FROM backup2 ORDER BY id DESC');
+    end;
+    Open;
+  end;
 end;
 
 end.

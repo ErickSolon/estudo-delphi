@@ -1,12 +1,6 @@
 ﻿[RelatoriosBtn]
 Coordinates=253,300,92,36
 
-[NomeLabel]
-Coordinates=10,232,80,58
-
-[Panel1]
-Coordinates=261,10,55,58
-
 [SelectAllBackup2DataSource]
 Coordinates=0,0,183,36
 
@@ -46,9 +40,6 @@ Coordinates=457,10,55,58
 [SelectAllBackup2idpessoas]
 Coordinates=536,221,173,36
 
-[InsertBackup2]
-Coordinates=536,276,97,36
-
 [NavbarTelaInicial]
 Coordinates=100,232,114,58
 
@@ -67,16 +58,10 @@ Coordinates=536,331,161,36
 [TelaInicialBtn]
 Coordinates=10,300,92,36
 
-[Salvar]
-Coordinates=135,10,51,58
-
 [SelectAllBackup2sobrenome]
 Coordinates=762,1,179,36
 
-[Edit1]
-Coordinates=224,232,44,58
-
 []
-Coordinates=391,10,56,58
+Coordinates=536,276,97,36
 Visible=True
 
