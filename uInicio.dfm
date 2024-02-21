@@ -271,6 +271,7 @@ object TelaInicial: TTelaInicial
           TabOrder = 0
           TextHint = 'Nome ou Id'
           OnChange = Edit2Change
+          ExplicitWidth = 164
           ExplicitHeight = 23
         end
         object BitBtn1: TBitBtn
@@ -283,7 +284,7 @@ object TelaInicial: TTelaInicial
           Caption = 'Filtrar'
           TabOrder = 1
           OnClick = BitBtn1Click
-          ExplicitTop = 20
+          ExplicitLeft = 359
         end
         object BitBtn2: TBitBtn
           AlignWithMargins = True
@@ -296,8 +297,6 @@ object TelaInicial: TTelaInicial
           TabOrder = 2
           OnClick = BitBtn2Click
           ExplicitLeft = 440
-          ExplicitTop = 4
-          ExplicitHeight = 40
         end
         object BitBtn3: TBitBtn
           AlignWithMargins = True
@@ -310,8 +309,7 @@ object TelaInicial: TTelaInicial
           Enabled = False
           TabOrder = 3
           OnClick = BitBtn3Click
-          ExplicitLeft = 240
-          ExplicitTop = 11
+          ExplicitLeft = 278
         end
         object CheckBox1: TCheckBox
           AlignWithMargins = True
@@ -329,8 +327,7 @@ object TelaInicial: TTelaInicial
           ParentFont = False
           TabOrder = 4
           OnClick = CheckBox1Click
-          ExplicitTop = 4
-          ExplicitHeight = 40
+          ExplicitLeft = 175
         end
       end
       object Panel4: TPanel
@@ -407,7 +404,8 @@ object TelaInicial: TTelaInicial
           Height = 41
           Align = alBottom
           TabOrder = 1
-          ExplicitTop = 345
+          ExplicitTop = 341
+          ExplicitWidth = 523
           object BitBtn4: TBitBtn
             Left = 1
             Top = 1
@@ -417,9 +415,6 @@ object TelaInicial: TTelaInicial
             Caption = 'Voltar'
             TabOrder = 0
             OnClick = BitBtn4Click
-            ExplicitLeft = 296
-            ExplicitTop = 16
-            ExplicitHeight = 25
           end
           object BitBtn5: TBitBtn
             Left = 451
@@ -430,9 +425,7 @@ object TelaInicial: TTelaInicial
             Caption = 'Avan'#231'ar'
             TabOrder = 1
             OnClick = BitBtn5Click
-            ExplicitLeft = 216
-            ExplicitTop = 16
-            ExplicitHeight = 25
+            ExplicitLeft = 447
           end
         end
       end
