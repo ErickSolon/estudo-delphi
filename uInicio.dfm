@@ -23,6 +23,8 @@ object TelaInicial: TTelaInicial
     Color = clCream
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 716
+    ExplicitHeight = 441
     object NavbarTelaInicial: TPanel
       Left = 1
       Top = 1
@@ -33,6 +35,7 @@ object TelaInicial: TTelaInicial
       Color = clCream
       ParentBackground = False
       TabOrder = 0
+      ExplicitHeight = 439
       object SairBtn: TSpeedButton
         AlignWithMargins = True
         Left = 4
@@ -234,6 +237,8 @@ object TelaInicial: TTelaInicial
       Height = 440
       Align = alClient
       TabOrder = 1
+      ExplicitWidth = 527
+      ExplicitHeight = 439
       object Panel3: TPanel
         AlignWithMargins = True
         Left = 4
@@ -242,48 +247,90 @@ object TelaInicial: TTelaInicial
         Height = 48
         Align = alTop
         TabOrder = 0
-        ExplicitLeft = 1
-        ExplicitTop = 1
-        ExplicitWidth = 529
+        ExplicitWidth = 519
         object Label1: TLabel
-          Left = 5
-          Top = 3
-          Width = 33
+          Left = 1
+          Top = 1
+          Width = 521
           Height = 15
-          Caption = 'Nome'
+          Align = alTop
+          Alignment = taCenter
+          Caption = 'A'#231#245'es'
+          ExplicitWidth = 32
         end
         object Edit2: TEdit
           AlignWithMargins = True
-          Left = 5
-          Top = 20
-          Width = 121
-          Height = 23
+          Left = 4
+          Top = 19
+          Width = 168
+          Height = 25
+          Align = alLeft
+          Anchors = [akLeft, akTop, akRight, akBottom]
+          ParentShowHint = False
+          ShowHint = True
           TabOrder = 0
+          TextHint = 'Nome ou Id'
           OnChange = Edit2Change
+          ExplicitHeight = 23
         end
         object BitBtn1: TBitBtn
           AlignWithMargins = True
           Left = 363
-          Top = 4
+          Top = 19
           Width = 75
-          Height = 40
+          Height = 25
           Align = alRight
           Caption = 'Filtrar'
           TabOrder = 1
           OnClick = BitBtn1Click
-          ExplicitLeft = 369
+          ExplicitTop = 20
         end
         object BitBtn2: TBitBtn
           AlignWithMargins = True
           Left = 444
-          Top = 4
+          Top = 19
           Width = 75
-          Height = 40
+          Height = 25
           Align = alRight
           Caption = 'Novo'
           TabOrder = 2
           OnClick = BitBtn2Click
-          ExplicitLeft = 450
+          ExplicitLeft = 440
+          ExplicitTop = 4
+          ExplicitHeight = 40
+        end
+        object BitBtn3: TBitBtn
+          AlignWithMargins = True
+          Left = 282
+          Top = 19
+          Width = 75
+          Height = 25
+          Align = alRight
+          Caption = 'Deletar'
+          Enabled = False
+          TabOrder = 3
+          OnClick = BitBtn3Click
+          ExplicitLeft = 240
+          ExplicitTop = 11
+        end
+        object CheckBox1: TCheckBox
+          AlignWithMargins = True
+          Left = 179
+          Top = 19
+          Width = 97
+          Height = 25
+          Align = alRight
+          Caption = 'Deletar?'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindow
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 4
+          OnClick = CheckBox1Click
+          ExplicitTop = 4
+          ExplicitHeight = 40
         end
       end
       object Panel4: TPanel
@@ -294,16 +341,21 @@ object TelaInicial: TTelaInicial
         Align = alClient
         Caption = 'Panel4'
         TabOrder = 1
-        ExplicitTop = 49
-        ExplicitHeight = 390
+        ExplicitWidth = 525
+        ExplicitHeight = 383
         object DBGrid1: TDBGrid
           AlignWithMargins = True
           Left = 4
           Top = 4
           Width = 521
           Height = 376
+          Cursor = crHandPoint
           Align = alClient
+          Ctl3D = True
           DataSource = SelectAllBackup2DataSource
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+          ParentCtl3D = False
+          ReadOnly = True
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
@@ -315,6 +367,11 @@ object TelaInicial: TTelaInicial
             item
               Expanded = False
               FieldName = 'id'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'idpessoas'
               Visible = True
             end
             item
@@ -341,11 +398,6 @@ object TelaInicial: TTelaInicial
               Expanded = False
               FieldName = 'telefone'
               Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'idpessoas'
-              Visible = True
             end>
         end
       end
@@ -361,7 +413,7 @@ object TelaInicial: TTelaInicial
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = False
+      ReadOnly = True
     end
     object SelectAllBackup2iddocumento: TIntegerField
       AutoGenerateValue = arDefault
@@ -402,6 +454,11 @@ object TelaInicial: TTelaInicial
     AutoEdit = False
     DataSet = SelectAllBackup2
     Left = 259
+    Top = 101
+  end
+  object DeleteBackup2ByNome: TFDQuery
+    Connection = ConnDataModule.Connection
+    Left = 512
     Top = 101
   end
 end

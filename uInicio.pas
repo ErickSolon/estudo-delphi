@@ -146,17 +146,24 @@ type
     BitBtn1: TBitBtn;
     Label1: TLabel;
     BitBtn2: TBitBtn;
+    BitBtn3: TBitBtn;
+    DeleteBackup2ByNome: TFDQuery;
+    CheckBox1: TCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure SairBtnClick(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
     procedure BitBtn2Click(Sender: TObject);
     procedure Edit2Change(Sender: TObject);
+    procedure BitBtn3Click(Sender: TObject);
+    procedure CheckBox1Click(Sender: TObject);
+
     
     
   private
     procedure EstilosPaginaInicial;
     procedure FiltroPgInicial;
+    var IsDeletarClicked : Boolean;
     { Private declarations }
   public
     { Public declarations }
@@ -164,6 +171,7 @@ type
 
 var
   TelaInicial: TTelaInicial;
+
 
 implementation
 
@@ -174,6 +182,9 @@ begin
   ConnDataModule := TConnDataModule.Create(Self);
   EstilosPaginaInicial;
   Label1.Font.Color := BRANCO;
+  IsDeletarClicked := false;
+  CheckBox1.Font.Color := BRANCO;
+  BitBtn1.Caption := 'Restaurar';
 
   with ConnDataModule.Connection do
   begin
@@ -219,6 +230,38 @@ begin
   Form2.ShowModal;
 end;
 
+procedure TTelaInicial.BitBtn3Click(Sender: TObject);
+begin
+  with DeleteBackup2ByNome do
+  begin
+    SQL.Clear;
+    SQL.Add('DELETE FROM backup2 WHERE idpessoas = :idpessoas');
+    Params.ParamByName('idpessoas').AsString := Edit2.Text;
+    ExecSQL;
+  end;
+end;
+
+procedure TTelaInicial.CheckBox1Click(Sender: TObject);
+begin
+  if CheckBox1.Checked then
+  begin
+    IsDeletarClicked := true;
+  end
+  else
+  begin
+    IsDeletarClicked := false;
+  end;
+
+  if IsDeletarClicked then
+  begin
+    BitBtn3.Enabled := true;
+  end
+  else
+  begin
+    BitBtn3.Enabled := false;
+  end;
+end;
+
 procedure TTelaInicial.DBGrid1CellClick(Column: TColumn);
 begin
   Form1 := TForm1.Create(Self);
@@ -234,6 +277,15 @@ end;
 procedure TTelaInicial.Edit2Change(Sender: TObject);
 begin
   FiltroPgInicial;
+
+  if Edit2.Text <> '' then
+  begin
+    BitBtn1.Caption := 'Filtrar';
+  end
+  else
+  begin
+    BitBtn1.Caption := 'Restaurar'
+  end;
 end;
 
 procedure TTelaInicial.EstilosPaginaInicial;
@@ -252,7 +304,7 @@ begin
     SQL.Clear;
     if Edit2.Text <> '' then
     begin
-      SQL.Add('SELECT * FROM backup2 WHERE nome LIKE :nome ORDER BY id DESC');
+      SQL.Add('SELECT * FROM backup2 WHERE (nome LIKE :nome OR idpessoas LIKE :nome) ORDER BY id DESC');
       Params.ParamByName('nome').AsString := '%' + Edit2.Text + '%';
     end
     else
