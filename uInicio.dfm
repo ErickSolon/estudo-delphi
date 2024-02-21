@@ -348,7 +348,7 @@ object TelaInicial: TTelaInicial
           Left = 4
           Top = 4
           Width = 521
-          Height = 376
+          Height = 335
           Cursor = crHandPoint
           Align = alClient
           Ctl3D = True
@@ -399,6 +399,41 @@ object TelaInicial: TTelaInicial
               FieldName = 'telefone'
               Visible = True
             end>
+        end
+        object Panel1: TPanel
+          Left = 1
+          Top = 342
+          Width = 527
+          Height = 41
+          Align = alBottom
+          TabOrder = 1
+          ExplicitTop = 345
+          object BitBtn4: TBitBtn
+            Left = 1
+            Top = 1
+            Width = 75
+            Height = 39
+            Align = alLeft
+            Caption = 'Voltar'
+            TabOrder = 0
+            OnClick = BitBtn4Click
+            ExplicitLeft = 296
+            ExplicitTop = 16
+            ExplicitHeight = 25
+          end
+          object BitBtn5: TBitBtn
+            Left = 451
+            Top = 1
+            Width = 75
+            Height = 39
+            Align = alRight
+            Caption = 'Avan'#231'ar'
+            TabOrder = 1
+            OnClick = BitBtn5Click
+            ExplicitLeft = 216
+            ExplicitTop = 16
+            ExplicitHeight = 25
+          end
         end
       end
     end

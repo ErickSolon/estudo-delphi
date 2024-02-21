@@ -266,7 +266,10 @@ object TelaInicial: TTelaInicial
           Height = 25
           Align = alLeft
           Anchors = [akLeft, akTop, akRight, akBottom]
+          ParentShowHint = False
+          ShowHint = True
           TabOrder = 0
+          TextHint = 'Nome ou Id'
           OnChange = Edit2Change
           ExplicitHeight = 23
         end
@@ -346,8 +349,13 @@ object TelaInicial: TTelaInicial
           Top = 4
           Width = 521
           Height = 376
+          Cursor = crHandPoint
           Align = alClient
+          Ctl3D = True
           DataSource = SelectAllBackup2DataSource
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+          ParentCtl3D = False
+          ReadOnly = True
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
@@ -359,6 +367,11 @@ object TelaInicial: TTelaInicial
             item
               Expanded = False
               FieldName = 'id'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'idpessoas'
               Visible = True
             end
             item
@@ -384,11 +397,6 @@ object TelaInicial: TTelaInicial
             item
               Expanded = False
               FieldName = 'telefone'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'idpessoas'
               Visible = True
             end>
         end

@@ -149,6 +149,9 @@ type
     BitBtn3: TBitBtn;
     DeleteBackup2ByNome: TFDQuery;
     CheckBox1: TCheckBox;
+    Panel1: TPanel;
+    BitBtn4: TBitBtn;
+    BitBtn5: TBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure SairBtnClick(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -157,6 +160,8 @@ type
     procedure Edit2Change(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
     procedure CheckBox1Click(Sender: TObject);
+    procedure BitBtn4Click(Sender: TObject);
+    procedure BitBtn5Click(Sender: TObject);
 
     
     
@@ -164,6 +169,7 @@ type
     procedure EstilosPaginaInicial;
     procedure FiltroPgInicial;
     var IsDeletarClicked : Boolean;
+    var Pagina : Integer;
     { Private declarations }
   public
     { Public declarations }
@@ -184,6 +190,10 @@ begin
   Label1.Font.Color := BRANCO;
   IsDeletarClicked := false;
   CheckBox1.Font.Color := BRANCO;
+  BitBtn1.Caption := 'Restaurar';
+  Pagina := 0;
+  Panel1.Caption := 'Página 0';
+  Panel1.Font.Color := BRANCO;
 
   with ConnDataModule.Connection do
   begin
@@ -240,6 +250,46 @@ begin
   end;
 end;
 
+procedure TTelaInicial.BitBtn4Click(Sender: TObject);
+begin
+  FiltroPgInicial;
+
+  with BitBtn4 do
+  begin
+    Pagina := Pagina - 20;
+    Panel1.Caption := 'Pagina ' + Pagina.ToString();
+  end;
+
+  if Pagina <= 0 then
+  begin
+    BitBtn4.Enabled := false;
+  end
+  else
+  begin
+    BitBtn4.Enabled := true;
+  end;
+end;
+
+procedure TTelaInicial.BitBtn5Click(Sender: TObject);
+begin
+  FiltroPgInicial;
+
+  with BitBtn5 do
+  begin
+    Pagina := Pagina + 20;
+    Panel1.Caption := 'Página ' + Pagina.ToString();
+  end;
+
+  if Pagina <= 0 then
+  begin
+    BitBtn4.Enabled := false;
+  end
+  else
+  begin
+    BitBtn4.Enabled := true;
+  end;
+end;
+
 procedure TTelaInicial.CheckBox1Click(Sender: TObject);
 begin
   if CheckBox1.Checked then
@@ -276,6 +326,15 @@ end;
 procedure TTelaInicial.Edit2Change(Sender: TObject);
 begin
   FiltroPgInicial;
+
+  if Edit2.Text <> '' then
+  begin
+    BitBtn1.Caption := 'Filtrar';
+  end
+  else
+  begin
+    BitBtn1.Caption := 'Restaurar'
+  end;
 end;
 
 procedure TTelaInicial.EstilosPaginaInicial;
@@ -294,12 +353,16 @@ begin
     SQL.Clear;
     if Edit2.Text <> '' then
     begin
-      SQL.Add('SELECT * FROM backup2 WHERE (nome LIKE :nome OR idpessoas LIKE :nome) ORDER BY id DESC');
+      SQL.Add('SELECT * FROM backup2 WHERE (nome LIKE :nome OR idpessoas LIKE :nome) ORDER BY id DESC LIMIT :pg, :qtd');
+      Params.ParamByName('pg').AsInteger := Pagina;
+      Params.ParamByName('qtd').AsInteger := 20;
       Params.ParamByName('nome').AsString := '%' + Edit2.Text + '%';
     end
     else
     begin
-      SQL.Add('SELECT * FROM backup2 ORDER BY id DESC');
+      SQL.Add('SELECT * FROM backup2 ORDER BY id DESC LIMIT :pg, :qtd');
+      Params.ParamByName('pg').AsInteger := Pagina;
+      Params.ParamByName('qtd').AsInteger := 20;
     end;
     Open;
   end;
