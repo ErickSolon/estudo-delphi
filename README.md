@@ -1,6 +1,4 @@
-TODO:
-  - Página de Relatórios
+![image](https://github.com/ErickSolon/estudo-delphi/assets/72041638/6f577b55-7a6b-41e9-8a89-7d2889079973)
 
-![image](https://github.com/ErickSolon/estudo-delphi/assets/72041638/914e7ef8-f169-4501-a8a6-3ea0ae6d8040)
 
 
