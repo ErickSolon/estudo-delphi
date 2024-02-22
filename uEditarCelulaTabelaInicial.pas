@@ -42,7 +42,9 @@ type
     Label3: TLabel;
     Label4: TLabel;
     NomeEditar: TEdit;
+    BitBtnDeletar: TBitBtn;
     procedure SalvarEdicaoClick(Sender: TObject);
+    procedure BitBtnDeletarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -56,6 +58,19 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TForm1.BitBtnDeletarClick(Sender: TObject);
+begin
+  with FDQuery1 do
+  begin
+    SQL.Clear;
+    SQL.Add('DELETE FROM backup2 WHERE id = :id');
+    Params.ParamByName('id').AsString := IdPessoa.ToString();
+    ExecSQL;
+
+    Form1.Free;
+  end;
+end;
 
 procedure TForm1.SalvarEdicaoClick(Sender: TObject);
 begin

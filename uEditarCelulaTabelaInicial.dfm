@@ -1,6 +1,8 @@
 object Form1: TForm1
   Left = 0
   Top = 0
+  AutoSize = True
+  BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Atualizar'
   ClientHeight = 165
   ClientWidth = 583
@@ -19,7 +21,8 @@ object Form1: TForm1
     Align = alClient
     AutoSize = True
     TabOrder = 0
-    ExplicitWidth = 634
+    ExplicitWidth = 579
+    ExplicitHeight = 164
     object Label1: TLabel
       Left = 24
       Top = 16
@@ -93,10 +96,19 @@ object Form1: TForm1
       Height = 23
       TabOrder = 4
     end
+    object BitBtnDeletar: TBitBtn
+      Left = 397
+      Top = 104
+      Width = 75
+      Height = 25
+      Caption = 'Deletar'
+      TabOrder = 5
+      OnClick = BitBtnDeletarClick
+    end
   end
   object FDQuery1: TFDQuery
     Connection = ConnDataModule.Connection
-    Left = 368
+    Left = 320
     Top = 88
   end
 end

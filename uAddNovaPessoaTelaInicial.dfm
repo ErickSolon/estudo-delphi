@@ -1,6 +1,8 @@
 object Form2: TForm2
   Left = 0
   Top = 0
+  AutoSize = True
+  BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Adicionar Nova Pessoa'
   ClientHeight = 170
   ClientWidth = 577
@@ -18,6 +20,8 @@ object Form2: TForm2
     Height = 170
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 573
+    ExplicitHeight = 169
     object Label1: TLabel
       Left = 24
       Top = 16

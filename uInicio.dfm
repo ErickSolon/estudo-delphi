@@ -23,8 +23,10 @@ object TelaInicial: TTelaInicial
     Color = clCream
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 716
-    ExplicitHeight = 441
+    ExplicitLeft = 4
+    ExplicitTop = 6
+    ExplicitWidth = 281
+    ExplicitHeight = 183
     object NavbarTelaInicial: TPanel
       Left = 1
       Top = 1
@@ -35,7 +37,6 @@ object TelaInicial: TTelaInicial
       Color = clCream
       ParentBackground = False
       TabOrder = 0
-      ExplicitHeight = 439
       object SairBtn: TSpeedButton
         AlignWithMargins = True
         Left = 4
@@ -55,6 +56,7 @@ object TelaInicial: TTelaInicial
         Height = 78
         Align = alTop
         Caption = 'Relat'#243'rios'
+        OnClick = RelatoriosBtnClick
         ExplicitTop = 276
       end
       object TelaInicialBtn: TSpeedButton
@@ -65,6 +67,7 @@ object TelaInicial: TTelaInicial
         Height = 78
         Align = alTop
         Caption = 'Tela Inicial'
+        OnClick = TelaInicialBtnClick
       end
       object PanelLogo: TPanel
         AlignWithMargins = True
@@ -230,202 +233,213 @@ object TelaInicial: TTelaInicial
         end
       end
     end
-    object Panel2: TPanel
+    object PageControl1: TPageControl
       Left = 188
       Top = 1
       Width = 531
       Height = 440
+      ActivePage = TabSheet2
       Align = alClient
       TabOrder = 1
-      ExplicitWidth = 527
-      ExplicitHeight = 439
-      object Panel3: TPanel
+      object TabSheet1: TTabSheet
         AlignWithMargins = True
-        Left = 4
-        Top = 4
-        Width = 523
-        Height = 48
-        Align = alTop
-        TabOrder = 0
-        ExplicitWidth = 519
-        object Label1: TLabel
-          Left = 1
-          Top = 1
-          Width = 521
-          Height = 15
-          Align = alTop
-          Alignment = taCenter
-          Caption = 'A'#231#245'es'
-          ExplicitWidth = 32
-        end
-        object Edit2: TEdit
-          AlignWithMargins = True
-          Left = 4
-          Top = 19
-          Width = 168
-          Height = 25
-          Align = alLeft
-          Anchors = [akLeft, akTop, akRight, akBottom]
-          ParentShowHint = False
-          ShowHint = True
+        Caption = 'Tela Inicial'
+        TabVisible = False
+        object Panel2: TPanel
+          Left = 0
+          Top = 0
+          Width = 517
+          Height = 424
+          Align = alClient
           TabOrder = 0
-          TextHint = 'Nome ou Id'
-          OnChange = Edit2Change
-          ExplicitWidth = 164
-          ExplicitHeight = 23
-        end
-        object BitBtn1: TBitBtn
-          AlignWithMargins = True
-          Left = 363
-          Top = 19
-          Width = 75
-          Height = 25
-          Align = alRight
-          Caption = 'Filtrar'
-          TabOrder = 1
-          OnClick = BitBtn1Click
-          ExplicitLeft = 359
-        end
-        object BitBtn2: TBitBtn
-          AlignWithMargins = True
-          Left = 444
-          Top = 19
-          Width = 75
-          Height = 25
-          Align = alRight
-          Caption = 'Novo'
-          TabOrder = 2
-          OnClick = BitBtn2Click
-          ExplicitLeft = 440
-        end
-        object BitBtn3: TBitBtn
-          AlignWithMargins = True
-          Left = 282
-          Top = 19
-          Width = 75
-          Height = 25
-          Align = alRight
-          Caption = 'Deletar'
-          Enabled = False
-          TabOrder = 3
-          OnClick = BitBtn3Click
-          ExplicitLeft = 278
-        end
-        object CheckBox1: TCheckBox
-          AlignWithMargins = True
-          Left = 179
-          Top = 19
-          Width = 97
-          Height = 25
-          Align = alRight
-          Caption = 'Deletar?'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindow
-          Font.Height = -12
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 4
-          OnClick = CheckBox1Click
-          ExplicitLeft = 175
+          ExplicitWidth = 712
+          ExplicitHeight = 412
+          object Panel3: TPanel
+            AlignWithMargins = True
+            Left = 4
+            Top = 4
+            Width = 509
+            Height = 48
+            Align = alTop
+            TabOrder = 0
+            ExplicitWidth = 704
+            object Label1: TLabel
+              Left = 1
+              Top = 1
+              Width = 507
+              Height = 15
+              Align = alTop
+              Alignment = taCenter
+              Caption = 'A'#231#245'es'
+              ExplicitWidth = 32
+            end
+            object Edit2: TEdit
+              AlignWithMargins = True
+              Left = 4
+              Top = 19
+              Width = 339
+              Height = 25
+              Align = alLeft
+              Anchors = [akLeft, akTop, akRight, akBottom]
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 0
+              TextHint = 'Nome ou Id'
+              OnChange = Edit2Change
+            end
+            object BitBtn1: TBitBtn
+              AlignWithMargins = True
+              Left = 349
+              Top = 19
+              Width = 75
+              Height = 25
+              Align = alRight
+              Caption = 'Filtrar'
+              TabOrder = 1
+              OnClick = BitBtn1Click
+              ExplicitLeft = 544
+            end
+            object BitBtn2: TBitBtn
+              AlignWithMargins = True
+              Left = 430
+              Top = 19
+              Width = 75
+              Height = 25
+              Align = alRight
+              Caption = 'Novo'
+              TabOrder = 2
+              OnClick = BitBtn2Click
+              ExplicitLeft = 625
+            end
+          end
+          object Panel4: TPanel
+            Left = 1
+            Top = 55
+            Width = 515
+            Height = 368
+            Align = alClient
+            Caption = 'Panel4'
+            TabOrder = 1
+            ExplicitWidth = 710
+            ExplicitHeight = 356
+            object DBGrid1: TDBGrid
+              AlignWithMargins = True
+              Left = 4
+              Top = 4
+              Width = 507
+              Height = 319
+              Cursor = crHandPoint
+              Align = alClient
+              Ctl3D = True
+              DataSource = SelectAllBackup2DataSource
+              Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+              ParentCtl3D = False
+              ReadOnly = True
+              TabOrder = 0
+              TitleFont.Charset = DEFAULT_CHARSET
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -12
+              TitleFont.Name = 'Segoe UI'
+              TitleFont.Style = []
+              OnCellClick = DBGrid1CellClick
+              Columns = <
+                item
+                  Expanded = False
+                  FieldName = 'id'
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'idpessoas'
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'iddocumento'
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'nome'
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'sobrenome'
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'cpf'
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'telefone'
+                  Visible = True
+                end>
+            end
+            object Panel1: TPanel
+              Left = 1
+              Top = 326
+              Width = 513
+              Height = 41
+              Align = alBottom
+              TabOrder = 1
+              ExplicitTop = 314
+              ExplicitWidth = 708
+              object BitBtn4: TBitBtn
+                Left = 1
+                Top = 1
+                Width = 75
+                Height = 39
+                Align = alLeft
+                Caption = 'Voltar'
+                TabOrder = 0
+                OnClick = BitBtn4Click
+              end
+              object BitBtn5: TBitBtn
+                Left = 437
+                Top = 1
+                Width = 75
+                Height = 39
+                Align = alRight
+                Caption = 'Avan'#231'ar'
+                TabOrder = 1
+                OnClick = BitBtn5Click
+                ExplicitLeft = 632
+              end
+            end
+          end
         end
       end
-      object Panel4: TPanel
-        Left = 1
-        Top = 55
-        Width = 529
-        Height = 384
-        Align = alClient
-        Caption = 'Panel4'
-        TabOrder = 1
-        ExplicitWidth = 525
-        ExplicitHeight = 383
-        object DBGrid1: TDBGrid
-          AlignWithMargins = True
-          Left = 4
-          Top = 4
-          Width = 521
-          Height = 335
-          Cursor = crHandPoint
+      object TabSheet2: TTabSheet
+        Caption = 'Relat'#243'rios'
+        ImageIndex = 1
+        TabVisible = False
+        object Panel5: TPanel
+          Left = 0
+          Top = 0
+          Width = 523
+          Height = 430
           Align = alClient
-          Ctl3D = True
-          DataSource = SelectAllBackup2DataSource
-          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-          ParentCtl3D = False
-          ReadOnly = True
           TabOrder = 0
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -12
-          TitleFont.Name = 'Segoe UI'
-          TitleFont.Style = []
-          OnCellClick = DBGrid1CellClick
-          Columns = <
-            item
-              Expanded = False
-              FieldName = 'id'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'idpessoas'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'iddocumento'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'nome'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'sobrenome'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'cpf'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'telefone'
-              Visible = True
-            end>
-        end
-        object Panel1: TPanel
-          Left = 1
-          Top = 342
-          Width = 527
-          Height = 41
-          Align = alBottom
-          TabOrder = 1
-          ExplicitTop = 341
-          ExplicitWidth = 523
-          object BitBtn4: TBitBtn
-            Left = 1
-            Top = 1
-            Width = 75
-            Height = 39
-            Align = alLeft
-            Caption = 'Voltar'
-            TabOrder = 0
-            OnClick = BitBtn4Click
-          end
-          object BitBtn5: TBitBtn
-            Left = 451
-            Top = 1
-            Width = 75
-            Height = 39
-            Align = alRight
-            Caption = 'Avan'#231'ar'
-            TabOrder = 1
-            OnClick = BitBtn5Click
-            ExplicitLeft = 447
+          ExplicitLeft = 168
+          ExplicitTop = 192
+          ExplicitWidth = 185
+          ExplicitHeight = 41
+          object Label2: TLabel
+            Left = 16
+            Top = 23
+            Width = 270
+            Height = 28
+            Caption = 'Total de pessoas cadastradas: 0'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -20
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
           end
         end
       end
@@ -435,8 +449,8 @@ object TelaInicial: TTelaInicial
     Connection = ConnDataModule.Connection
     SQL.Strings = (
       'SELECT * FROM backup2 ORDER BY id DESC;')
-    Left = 390
-    Top = 101
+    Left = 116
+    Top = 130
     object SelectAllBackup2id: TFDAutoIncField
       FieldName = 'id'
       Origin = 'id'
@@ -481,12 +495,19 @@ object TelaInicial: TTelaInicial
   object SelectAllBackup2DataSource: TDataSource
     AutoEdit = False
     DataSet = SelectAllBackup2
-    Left = 259
-    Top = 101
+    Left = 88
+    Top = 77
   end
   object DeleteBackup2ByNome: TFDQuery
     Connection = ConnDataModule.Connection
-    Left = 512
-    Top = 101
+    Left = 61
+    Top = 25
+  end
+  object FDQuery1: TFDQuery
+    Connection = ConnDataModule.Connection
+    SQL.Strings = (
+      '')
+    Left = 128
+    Top = 8
   end
 end

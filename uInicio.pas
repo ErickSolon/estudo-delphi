@@ -118,7 +118,7 @@ uses
   FireDAC.Comp.DataSet,
   FireDAC.DApt,
   uEditarCelulaTabelaInicial,
-  uAddNovaPessoaTelaInicial;
+  uAddNovaPessoaTelaInicial, Vcl.ComCtrls;
 
 type
   TTelaInicial = class(TForm)
@@ -146,12 +146,16 @@ type
     BitBtn1: TBitBtn;
     Label1: TLabel;
     BitBtn2: TBitBtn;
-    BitBtn3: TBitBtn;
     DeleteBackup2ByNome: TFDQuery;
-    CheckBox1: TCheckBox;
     Panel1: TPanel;
     BitBtn4: TBitBtn;
     BitBtn5: TBitBtn;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    Panel5: TPanel;
+    Label2: TLabel;
+    FDQuery1: TFDQuery;
     procedure FormCreate(Sender: TObject);
     procedure SairBtnClick(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -159,9 +163,11 @@ type
     procedure BitBtn2Click(Sender: TObject);
     procedure Edit2Change(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
-    procedure CheckBox1Click(Sender: TObject);
     procedure BitBtn4Click(Sender: TObject);
     procedure BitBtn5Click(Sender: TObject);
+    procedure TelaInicialBtnClick(Sender: TObject);
+    procedure RelatoriosBtnClick(Sender: TObject);
+
 
     
     
@@ -187,13 +193,13 @@ procedure TTelaInicial.FormCreate(Sender: TObject);
 begin
   ConnDataModule := TConnDataModule.Create(Self);
   EstilosPaginaInicial;
-  Label1.Font.Color := BRANCO;
+  FiltroPgInicial;
+  Label1.Font.Color := PRETO;
   IsDeletarClicked := false;
-  CheckBox1.Font.Color := BRANCO;
   BitBtn1.Caption := 'Restaurar';
   Pagina := 0;
   Panel1.Caption := 'Página 0';
-  Panel1.Font.Color := BRANCO;
+  Panel1.Font.Color := PRETO;
   BitBtn4.Font.Color := PRETO;
   BitBtn5.Font.Color := PRETO;
 
@@ -221,11 +227,43 @@ begin
   begin
     DataSource.DataSet.Active := true;
   end;
+
+  with PageControl1 do
+  begin
+    ActivePage := TabSheet1;
+  end;
+
+  with FDQuery1 do
+  begin
+    SQL.Text := 'SELECT COUNT(id) as id FROM backup2';
+    Open;
+    Label2.Caption := 'Total de pessoas cadastradas: ' + FieldByName('id').AsString;
+  end;
+end;
+
+procedure TTelaInicial.RelatoriosBtnClick(Sender: TObject);
+begin
+  TelaInicial.Caption := '.: Relatórios :.';
+
+  with PageControl1 do
+  begin
+    ActivePage := TabSheet2;
+  end;
 end;
 
 procedure TTelaInicial.SairBtnClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TTelaInicial.TelaInicialBtnClick(Sender: TObject);
+begin
+  TelaInicial.Caption := '.: Tela Inicial :.';
+
+  with PageControl1 do
+  begin
+    ActivePage := TabSheet1;
+  end;
 end;
 
 procedure TTelaInicial.BitBtn1Click(Sender: TObject);
@@ -292,37 +330,16 @@ begin
   end;
 end;
 
-procedure TTelaInicial.CheckBox1Click(Sender: TObject);
-begin
-  if CheckBox1.Checked then
-  begin
-    IsDeletarClicked := true;
-  end
-  else
-  begin
-    IsDeletarClicked := false;
-  end;
-
-  if IsDeletarClicked then
-  begin
-    BitBtn3.Enabled := true;
-  end
-  else
-  begin
-    BitBtn3.Enabled := false;
-  end;
-end;
-
 procedure TTelaInicial.DBGrid1CellClick(Column: TColumn);
 begin
   Form1 := TForm1.Create(Self);
   Form1.Show;
 
-  Form1.NomeEditar.Text := DBGrid1.Fields[2].AsString;
-  Form1.Edit2.Text := DBGrid1.Fields[3].AsString;
-  Form1.Edit3.Text := DBGrid1.Fields[4].AsString;
-  Form1.Edit4.Text := DBGrid1.Fields[5].AsString;
-  Form1.IdPessoa := DBGrid1.Fields[0].AsInteger;
+  Form1.NomeEditar.Text := DBGrid1.Fields[3].AsString;
+  Form1.Edit2.Text := DBGrid1.Fields[4].AsString;
+  Form1.Edit3.Text := DBGrid1.Fields[5].AsString;
+  Form1.Edit4.Text := DBGrid1.Fields[6].AsString;
+  Form1.IdPessoa := DBGrid1.Fields[1].AsInteger;
 end;
 
 procedure TTelaInicial.Edit2Change(Sender: TObject);
