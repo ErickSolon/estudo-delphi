@@ -118,7 +118,8 @@ uses
   FireDAC.Comp.DataSet,
   FireDAC.DApt,
   uEditarCelulaTabelaInicial,
-  uAddNovaPessoaTelaInicial, Vcl.ComCtrls;
+  uAddNovaPessoaTelaInicial, Vcl.ComCtrls, FireDAC.UI.Intf, FireDAC.VCLUI.Login,
+  FireDAC.Comp.UI;
 
 type
   TTelaInicial = class(TForm)
@@ -156,6 +157,7 @@ type
     Panel5: TPanel;
     Label2: TLabel;
     FDQuery1: TFDQuery;
+    FDGUIxLoginDialog1: TFDGUIxLoginDialog;
     procedure FormCreate(Sender: TObject);
     procedure SairBtnClick(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);

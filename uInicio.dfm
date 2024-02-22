@@ -23,10 +23,8 @@ object TelaInicial: TTelaInicial
     Color = clCream
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 4
-    ExplicitTop = 6
-    ExplicitWidth = 281
-    ExplicitHeight = 183
+    ExplicitWidth = 716
+    ExplicitHeight = 441
     object NavbarTelaInicial: TPanel
       Left = 1
       Top = 1
@@ -37,6 +35,7 @@ object TelaInicial: TTelaInicial
       Color = clCream
       ParentBackground = False
       TabOrder = 0
+      ExplicitHeight = 439
       object SairBtn: TSpeedButton
         AlignWithMargins = True
         Left = 4
@@ -2134,6 +2133,8 @@ object TelaInicial: TTelaInicial
         Layout = blGlyphBottom
         Transparent = False
         OnClick = TelaInicialBtnClick
+        ExplicitLeft = 6
+        ExplicitTop = 207
       end
       object PanelLogo: TPanel
         AlignWithMargins = True
@@ -2307,6 +2308,8 @@ object TelaInicial: TTelaInicial
       ActivePage = TabSheet2
       Align = alClient
       TabOrder = 1
+      ExplicitWidth = 527
+      ExplicitHeight = 439
       object TabSheet1: TTabSheet
         AlignWithMargins = True
         Caption = 'Tela Inicial'
@@ -2318,8 +2321,6 @@ object TelaInicial: TTelaInicial
           Height = 424
           Align = alClient
           TabOrder = 0
-          ExplicitWidth = 712
-          ExplicitHeight = 412
           object Panel3: TPanel
             AlignWithMargins = True
             Left = 4
@@ -2328,7 +2329,6 @@ object TelaInicial: TTelaInicial
             Height = 48
             Align = alTop
             TabOrder = 0
-            ExplicitWidth = 704
             object Label1: TLabel
               Left = 1
               Top = 1
@@ -2352,6 +2352,7 @@ object TelaInicial: TTelaInicial
               TabOrder = 0
               TextHint = 'Nome ou Id'
               OnChange = Edit2Change
+              ExplicitHeight = 23
             end
             object BitBtn1: TBitBtn
               AlignWithMargins = True
@@ -2363,7 +2364,6 @@ object TelaInicial: TTelaInicial
               Caption = 'Filtrar'
               TabOrder = 1
               OnClick = BitBtn1Click
-              ExplicitLeft = 544
             end
             object BitBtn2: TBitBtn
               AlignWithMargins = True
@@ -2375,7 +2375,6 @@ object TelaInicial: TTelaInicial
               Caption = 'Novo'
               TabOrder = 2
               OnClick = BitBtn2Click
-              ExplicitLeft = 625
             end
           end
           object Panel4: TPanel
@@ -2386,8 +2385,6 @@ object TelaInicial: TTelaInicial
             Align = alClient
             Caption = 'Panel4'
             TabOrder = 1
-            ExplicitWidth = 710
-            ExplicitHeight = 356
             object DBGrid1: TDBGrid
               AlignWithMargins = True
               Left = 4
@@ -2452,8 +2449,6 @@ object TelaInicial: TTelaInicial
               Height = 41
               Align = alBottom
               TabOrder = 1
-              ExplicitTop = 314
-              ExplicitWidth = 708
               object BitBtn4: TBitBtn
                 Left = 1
                 Top = 1
@@ -2473,27 +2468,25 @@ object TelaInicial: TTelaInicial
                 Caption = 'Avan'#231'ar'
                 TabOrder = 1
                 OnClick = BitBtn5Click
-                ExplicitLeft = 632
               end
             end
           end
         end
       end
       object TabSheet2: TTabSheet
+        AlignWithMargins = True
         Caption = 'Relat'#243'rios'
         ImageIndex = 1
         TabVisible = False
         object Panel5: TPanel
           Left = 0
           Top = 0
-          Width = 523
-          Height = 430
+          Width = 517
+          Height = 424
           Align = alClient
           TabOrder = 0
-          ExplicitLeft = 168
-          ExplicitTop = 192
-          ExplicitWidth = 185
-          ExplicitHeight = 41
+          ExplicitWidth = 519
+          ExplicitHeight = 429
           object Label2: TLabel
             Left = 16
             Top = 23
@@ -2575,5 +2568,10 @@ object TelaInicial: TTelaInicial
       '')
     Left = 128
     Top = 8
+  end
+  object FDGUIxLoginDialog1: TFDGUIxLoginDialog
+    Provider = 'Forms'
+    Left = 672
+    Top = 24
   end
 end
