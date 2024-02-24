@@ -192,6 +192,14 @@ implementation
 {$R *.dfm}
 
 procedure TTelaInicial.FormCreate(Sender: TObject);
+var
+    Usuario,
+    Porta,
+    Endereco,
+    Banco,
+    LinhaArquivo,
+    TipoBanco: string;
+    Arquivo: TextFile;
 begin
   ConnDataModule := TConnDataModule.Create(Self);
   EstilosPaginaInicial;
@@ -207,9 +215,23 @@ begin
 
   with ConnDataModule.Connection do
   begin
-    Connected := true;
+//    AssignFile(Arquivo, 'D:\\Workspace\\delphi\\Projeto\\estudo-delphi\\config.ini');
+//    Reset(Arquivo);
+//
+//    var ContadorLinha := 0;
+//    while not eof(Arquivo) do
+//    begin
+//      ContadorLinha := ContadorLinha + 1;
+//      ReadLn(Arquivo, LinhaArquivo);
+//
+//      if ContadorLinha = 1 then
+//      begin
+//        Database := LinhaArquivo + sLineBreak;
+//      end;
+//    end;
+  Connected := true;
   end;
-
+  
   with NavbarTelaInicial do
   begin
     Color := PRETO;

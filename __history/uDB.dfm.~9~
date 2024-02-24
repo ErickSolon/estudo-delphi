@@ -1,0 +1,12 @@
+object ConnDataModule: TConnDataModule
+  OnCreate = DataModuleCreate
+  Height = 170
+  Width = 640
+  object Connection: TFDConnection
+    Params.Strings = (
+      'User_Name=root'
+      'DriverID=MySQL')
+    Left = 40
+    Top = 16
+  end
+end

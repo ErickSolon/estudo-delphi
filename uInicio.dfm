@@ -37,10 +37,9 @@ object TelaInicial: TTelaInicial
       TabOrder = 0
       ExplicitHeight = 439
       object SairBtn: TSpeedButton
-        AlignWithMargins = True
-        Left = 4
-        Top = 359
-        Width = 179
+        Left = 1
+        Top = 344
+        Width = 185
         Height = 78
         Cursor = crCross
         Align = alTop
@@ -1300,13 +1299,14 @@ object TelaInicial: TTelaInicial
           000000000000}
         Layout = blGlyphTop
         OnClick = SairBtnClick
+        ExplicitLeft = 4
         ExplicitTop = 361
+        ExplicitWidth = 179
       end
       object RelatoriosBtn: TSpeedButton
-        AlignWithMargins = True
-        Left = 4
-        Top = 275
-        Width = 179
+        Left = 1
+        Top = 266
+        Width = 185
         Height = 78
         Cursor = crCross
         Align = alTop
@@ -1604,13 +1604,14 @@ object TelaInicial: TTelaInicial
           000000000000}
         Layout = blGlyphBottom
         OnClick = RelatoriosBtnClick
+        ExplicitLeft = 4
         ExplicitTop = 276
+        ExplicitWidth = 179
       end
       object TelaInicialBtn: TSpeedButton
-        AlignWithMargins = True
-        Left = 4
-        Top = 191
-        Width = 179
+        Left = 1
+        Top = 188
+        Width = 185
         Height = 78
         Cursor = crCross
         Align = alTop
@@ -2131,10 +2132,10 @@ object TelaInicial: TTelaInicial
           0044000000440000004400000044000000440000004400000044000000440000
           001E00000000}
         Layout = blGlyphBottom
-        Transparent = False
         OnClick = TelaInicialBtnClick
         ExplicitLeft = 6
         ExplicitTop = 207
+        ExplicitWidth = 179
       end
       object PanelLogo: TPanel
         AlignWithMargins = True
@@ -2332,12 +2333,11 @@ object TelaInicial: TTelaInicial
             object Label1: TLabel
               Left = 1
               Top = 1
-              Width = 507
+              Width = 32
               Height = 15
               Align = alTop
               Alignment = taCenter
               Caption = 'A'#231#245'es'
-              ExplicitWidth = 32
             end
             object Edit2: TEdit
               AlignWithMargins = True
@@ -2485,8 +2485,8 @@ object TelaInicial: TTelaInicial
           Height = 424
           Align = alClient
           TabOrder = 0
-          ExplicitWidth = 519
-          ExplicitHeight = 429
+          ExplicitWidth = 513
+          ExplicitHeight = 423
           object Label2: TLabel
             Left = 16
             Top = 23

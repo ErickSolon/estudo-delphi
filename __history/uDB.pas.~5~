@@ -1,0 +1,91 @@
+unit uDB;
+
+interface
+
+uses
+  System.SysUtils,
+  System.Classes,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Error,
+  FireDAC.UI.Intf,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Def,
+  FireDAC.Stan.Pool,
+  FireDAC.Stan.Async,
+  FireDAC.Phys,
+  FireDAC.Phys.MySQL,
+  FireDAC.Phys.MySQLDef,
+  FireDAC.VCLUI.Wait,
+  Data.DB,
+  FireDAC.Comp.Client;
+
+type
+  TConnDataModule = class(TDataModule)
+    Connection: TFDConnection;
+    procedure DataModuleCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ConnDataModule: TConnDataModule;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+procedure TConnDataModule.DataModuleCreate(Sender: TObject);
+var
+    Usuario,
+    Porta,
+    Endereco,
+    Banco,
+    LinhaArquivo,
+    TipoBanco: string;
+    Arquivo: TextFile;
+begin
+  with ConnDataModule.Connection do
+  begin
+    AssignFile(Arquivo, 'D:\\Workspace\\delphi\\Projeto\\estudo-delphi\\config.ini');
+    Reset(Arquivo);
+
+    var ContadorLinha := 0;
+    while not eof(Arquivo) do
+    begin
+      ContadorLinha := ContadorLinha + 1;
+      Readln(Arquivo, LinhaArquivo);
+
+      if ContadorLinha = 1 then
+      begin
+        DriverName := LinhaArquivo;
+      end;
+
+      if ContadorLinha = 2 then
+      begin
+        Params.UserName := LinhaArquivo;
+      end;
+
+      if ContadorLinha = 3 then
+      begin
+        Endereco := LinhaArquivo;
+      end;
+
+      if ContadorLinha = 4 then
+      begin
+        Porta := LinhaArquivo;
+      end;
+
+      if ContadorLinha = 5 then
+      begin
+        Params.Database := LinhaArquivo;
+      end;
+    end;
+  end;
+end;
+
+end.
