@@ -118,7 +118,10 @@ uses
   FireDAC.Comp.DataSet,
   FireDAC.DApt,
   uEditarCelulaTabelaInicial,
-  uAddNovaPessoaTelaInicial, Vcl.ComCtrls, FireDAC.UI.Intf, FireDAC.VCLUI.Login,
+  uAddNovaPessoaTelaInicial,
+  Vcl.ComCtrls,
+  FireDAC.UI.Intf,
+  FireDAC.VCLUI.Login,
   FireDAC.Comp.UI;
 
 type
@@ -157,7 +160,8 @@ type
     Panel5: TPanel;
     Label2: TLabel;
     FDQuery1: TFDQuery;
-    FDGUIxLoginDialog1: TFDGUIxLoginDialog;
+    FDQuery2: TFDQuery;
+    FDQuery3: TFDQuery;
     procedure FormCreate(Sender: TObject);
     procedure SairBtnClick(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -169,16 +173,14 @@ type
     procedure BitBtn5Click(Sender: TObject);
     procedure TelaInicialBtnClick(Sender: TObject);
     procedure RelatoriosBtnClick(Sender: TObject);
-
-
-    
-    
   private
+    { Private declarations }
     procedure EstilosPaginaInicial;
     procedure FiltroPgInicial;
     var IsDeletarClicked : Boolean;
     var Pagina : Integer;
-    { Private declarations }
+    var PaginaContador: Integer;
+    var TotalPessoasFromBackup2 : Integer;
   public
     { Public declarations }
   end;
@@ -186,9 +188,7 @@ type
 var
   TelaInicial: TTelaInicial;
 
-
 implementation
-
 {$R *.dfm}
 
 procedure TTelaInicial.FormCreate(Sender: TObject);
@@ -208,10 +208,11 @@ begin
   IsDeletarClicked := false;
   BitBtn1.Caption := 'Restaurar';
   Pagina := 0;
-  Panel1.Caption := 'Página 0';
+  Panel1.Caption := 'Página 1';
   Panel1.Font.Color := PRETO;
   BitBtn4.Font.Color := PRETO;
   BitBtn5.Font.Color := PRETO;
+  Self.PaginaContador := 1;
 
   with ConnDataModule.Connection do
   begin
@@ -318,10 +319,13 @@ procedure TTelaInicial.BitBtn4Click(Sender: TObject);
 begin
   FiltroPgInicial;
 
+  Self.PaginaContador := Self.PaginaContador - 1;
+
   with BitBtn4 do
   begin
     Pagina := Pagina - 20;
-    Panel1.Caption := 'Pagina ' + Pagina.ToString();
+    // Panel1.Caption := 'Pagina ' + Pagina.ToString();
+    Panel1.Caption := 'Página ' + Self.PaginaContador.ToString();
   end;
 
   if Pagina <= 0 then
@@ -338,10 +342,13 @@ procedure TTelaInicial.BitBtn5Click(Sender: TObject);
 begin
   FiltroPgInicial;
 
+  Self.PaginaContador := Self.PaginaContador + 1;
+
   with BitBtn5 do
   begin
     Pagina := Pagina + 20;
-    Panel1.Caption := 'Página ' + Pagina.ToString();
+    // Panel1.Caption := 'Página ' + Pagina.ToString();
+    Panel1.Caption := 'Página ' + Self.PaginaContador.ToString();
   end;
 
   if Pagina <= 0 then
@@ -351,6 +358,13 @@ begin
   else
   begin
     BitBtn4.Enabled := true;
+  end;
+
+  with FDQuery2 do
+  begin
+    SQL.Text := 'SELECT COUNT(id) AS idtotal FROM backup2';
+    Open;
+    Self.TotalPessoasFromBackup2 := FieldByName('idtotal').AsInteger;
   end;
 end;
 
@@ -400,6 +414,8 @@ begin
       Params.ParamByName('pg').AsInteger := Pagina;
       Params.ParamByName('qtd').AsInteger := 20;
       Params.ParamByName('nome').AsString := '%' + Edit2.Text + '%';
+
+
     end
     else
     begin

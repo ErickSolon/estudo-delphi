@@ -2306,7 +2306,7 @@ object TelaInicial: TTelaInicial
       Top = 1
       Width = 531
       Height = 440
-      ActivePage = TabSheet2
+      ActivePage = TabSheet1
       Align = alClient
       TabOrder = 1
       ExplicitWidth = 527
@@ -2322,6 +2322,8 @@ object TelaInicial: TTelaInicial
           Height = 424
           Align = alClient
           TabOrder = 0
+          ExplicitWidth = 513
+          ExplicitHeight = 423
           object Panel3: TPanel
             AlignWithMargins = True
             Left = 4
@@ -2330,14 +2332,16 @@ object TelaInicial: TTelaInicial
             Height = 48
             Align = alTop
             TabOrder = 0
+            ExplicitWidth = 505
             object Label1: TLabel
               Left = 1
               Top = 1
-              Width = 32
+              Width = 507
               Height = 15
               Align = alTop
               Alignment = taCenter
               Caption = 'A'#231#245'es'
+              ExplicitWidth = 32
             end
             object Edit2: TEdit
               AlignWithMargins = True
@@ -2352,6 +2356,7 @@ object TelaInicial: TTelaInicial
               TabOrder = 0
               TextHint = 'Nome ou Id'
               OnChange = Edit2Change
+              ExplicitWidth = 335
               ExplicitHeight = 23
             end
             object BitBtn1: TBitBtn
@@ -2364,6 +2369,7 @@ object TelaInicial: TTelaInicial
               Caption = 'Filtrar'
               TabOrder = 1
               OnClick = BitBtn1Click
+              ExplicitLeft = 345
             end
             object BitBtn2: TBitBtn
               AlignWithMargins = True
@@ -2375,6 +2381,7 @@ object TelaInicial: TTelaInicial
               Caption = 'Novo'
               TabOrder = 2
               OnClick = BitBtn2Click
+              ExplicitLeft = 426
             end
           end
           object Panel4: TPanel
@@ -2385,6 +2392,8 @@ object TelaInicial: TTelaInicial
             Align = alClient
             Caption = 'Panel4'
             TabOrder = 1
+            ExplicitWidth = 511
+            ExplicitHeight = 367
             object DBGrid1: TDBGrid
               AlignWithMargins = True
               Left = 4
@@ -2449,6 +2458,8 @@ object TelaInicial: TTelaInicial
               Height = 41
               Align = alBottom
               TabOrder = 1
+              ExplicitTop = 325
+              ExplicitWidth = 509
               object BitBtn4: TBitBtn
                 Left = 1
                 Top = 1
@@ -2468,6 +2479,7 @@ object TelaInicial: TTelaInicial
                 Caption = 'Avan'#231'ar'
                 TabOrder = 1
                 OnClick = BitBtn5Click
+                ExplicitLeft = 433
               end
             end
           end
@@ -2569,9 +2581,14 @@ object TelaInicial: TTelaInicial
     Left = 128
     Top = 8
   end
-  object FDGUIxLoginDialog1: TFDGUIxLoginDialog
-    Provider = 'Forms'
-    Left = 672
-    Top = 24
+  object FDQuery2: TFDQuery
+    Connection = ConnDataModule.Connection
+    Left = 144
+    Top = 56
+  end
+  object FDQuery3: TFDQuery
+    Connection = ConnDataModule.Connection
+    Left = 152
+    Top = 128
   end
 end
